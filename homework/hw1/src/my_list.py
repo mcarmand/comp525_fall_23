@@ -16,6 +16,11 @@ def count(num_list, num):
     :param num: integer
     :return: integer, representing how many times `num` is in `num_list`
     """
+    count = 0
+    for i in num_list:
+        if i == num:
+            count += 1
+    return count
 
 
 def extend(num_list, another_num_list):
@@ -26,6 +31,15 @@ def extend(num_list, another_num_list):
     :param another_num_list: list of integers
     :return: list of integers
     """
+    new_list = []
+
+    for i in num_list:
+        new_list.append(i)
+
+    for i in another_num_list:
+        new_list.append(i)
+
+    return new_list
 
 
 def remove(num_list, num):
@@ -36,6 +50,13 @@ def remove(num_list, num):
     :param num: integer
     :return: list of integers
     """
+    new_list = []
+
+    for i in num_list:
+        if i != num:
+            new_list.append(i)
+
+    return new_list
 
 
 def index(num_list, num):
@@ -47,3 +68,8 @@ def index(num_list, num):
     `num`
     :return: None, if `num` not found
     """
+    for idx, item in enumerate(num_list):
+        if item == num:
+            return idx
+    return None
+
