@@ -1,6 +1,9 @@
 from my_list import ( count, extend, remove, index )
 
 def count_test():
+    """
+    Test count function
+    """
     test_input = [5, 10, 15, 20, 67, 12, 3]
     test_value = 5
     expected = 1
@@ -10,6 +13,9 @@ def count_test():
 
 
 def extend_test():
+    """
+    Test extend function
+    """
     list_one = [1, 2, 3]
     list_two = [5, 4, 1]
     expected = [1, 2, 3, 5, 4, 1]
@@ -19,6 +25,9 @@ def extend_test():
 
 
 def remove_test():
+    """
+    Test remove function
+    """
     test_input = [12, 50, 3, 1]
     test_value = 50
     expected = [12, 3, 1]
@@ -28,6 +37,9 @@ def remove_test():
 
 
 def index_test():
+    """
+    Test index function
+    """
     test_input = [12, 50, 3, 1]
     test_value = 50
     expected = 1
