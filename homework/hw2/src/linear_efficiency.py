@@ -51,9 +51,7 @@ def reduce_adjacent(num_lst):
     """
     new_lst = []
     for idx, num in enumerate(num_lst):
-        if idx == 0:
-            new_lst.append(num)
-        elif num_lst[idx - 1] != num:
+        if idx == 0 or num_lst[idx - 1] != num:
             new_lst.append(num)
     return new_lst
 
