@@ -3,7 +3,7 @@ practice_dictionaries.py
 Get familiar with dictionaries
 Mihaela Sabin
 Created March 20, 2019
-Updated October 16, 2019; February 19, 2020
+Updated October 16, 2019; February 19, 2020, November 2, 2023
 """
 
 
@@ -21,7 +21,10 @@ class Practice(object):
         Returns: string with season names and descriptions and no spaces or
             other characters in between
         """
-        pass
+        season_str = ""
+        for key in season_dict.keys():
+            season_str += key + season_dict[key]
+        return season_str
 
     def update_inventory(self, inventory_dict, quantity_added):
         """
@@ -32,15 +35,7 @@ class Practice(object):
             values: int - inventory quantity of item
         Returns: dictionry
         """
-        pass
-
-if __name__ == '__main__':
-    p = Practice()
-    input1 = {
-        'spring': 'warm',
-        'summer': 'hot',
-        'fall': 'just right',
-        'winter': 'cold'
-    }
-    result = p.parse_seasons(input1)
-    print(f'parse_seasons({input1}) returns {result}')
+        new_dict = {}
+        for key in inventory_dict.keys():
+            new_dict[key] = inventory_dict[key] + quantity_added
+        return new_dict
