@@ -1,8 +1,8 @@
 """
 File: homework/h2/src/linear_efficiency.py
 Initial contributor: Mihaela
-Contributor:
-Date:
+Contributor: Mason Armand
+Date: Oct 26, 2023
 
 Implementation requirement:
 - Apply the accumulation pattern
@@ -13,7 +13,6 @@ Implementation requirement:
     Instead, write a 2nd design for that function to illustrate the use of
     built-in data type method.
 """
-
 
 def hide(sentence):
     """
@@ -28,6 +27,15 @@ def hide(sentence):
     Example 1: hide('babble') returns 'ba**le'
     Example 2: hide('more is less') returns 'more is*l*s*'
     """
+    seen = {}
+    new_sentence = ""
+    for char in sentence:
+        if char in seen:
+            new_sentence += "*"
+        else:
+            new_sentence += char
+            seen[char] = True
+    return new_sentence
 
 
 def reduce_adjacent(num_lst):
@@ -41,6 +49,13 @@ def reduce_adjacent(num_lst):
         repoeats
     Example: reduce_adjancent([1, 2, 2, 3]) returns [1, 2, 3]
     """
+    new_lst = []
+    for idx, num in enumerate(num_lst):
+        if idx == 0:
+            new_lst.append(num)
+        elif num_lst[idx - 1] != num:
+            new_lst.append(num)
+    return new_lst
 
 
 def reverse(word):
@@ -53,3 +68,10 @@ def reverse(word):
     Example: reverse('python') returns 'nohtyp'
     Implementation requirements: do not use list method reverse
     """
+    new_word = ""
+    idx = len(word) - 1
+    while idx >= 0:
+        new_word += word[idx]
+        idx -= 1
+    return new_word
+
