@@ -7,83 +7,129 @@ Date:
 """
 
 from unorderedlist import UnorderedList
+import unittest
+
+class TestHide(unittest.TestCase):
+
+    def test_prepend(self):
+        """
+        Call prepend() to create the list with items 6, 3, 7
+        """
+        lst = UnorderedList()
+        lst.prepend(7)
+        lst.prepend(3)
+        lst.prepend(6)
+
+        expected = "(6)->(3)->(7)"
+        result = str(lst)
+
+        self.assertEqual(expected, result)
 
 
-def test_prepend():
-    """
-    Call prepend() to create the list with items 6, 3, 7
-    """
-    # Start by creating UnorderedList object, `ul_obj`
-    ul_obj = UnorderedList()
+    def test_size(self):
+        """
+        Use code in test_prepend() to create the list 6, 3, 7.
+        Call size() to test the method.
+        """
+        lst = UnorderedList()
 
-    # Use `prepend()` three times with arguments 7, 3, 6
-    ul_obj.prepend(7)
-    ul_obj.prepend(3)
-    ul_obj.prepend(6)
+        lst.prepend(7)
+        lst.prepend(3)
+        lst.prepend(6)
+        lst.pop()
+        lst.remove(3)
 
-    print(f'\n{ul_obj.head.data}')
-    print(f'{ul_obj.head.next.data}')
-    print(f'{ul_obj.head.next.next.data}')
+        expected = 1
+        result = lst.get_size()
+        self.assertEqual(expected, result)
 
+    def test_search(self):
+        """
+        Use code in test_prepend() to create the list 6, 3, 7.
+        Call search(7) and search(10) to test the full behavior of the method.
+        """
+        lst = UnorderedList()
 
-def test_size():
-    """
-    Use code in test_prepend() to create the list 6, 3, 7.
-    Call size() to test the method.
-    """
-    ul_obj = UnorderedList()
+        lst.prepend(7)
+        lst.prepend(3)
+        lst.prepend(6)
 
-    # Use `prepend()` three times with arguments 7, 3, 6
-    ul_obj.prepend(7)
-    ul_obj.prepend(3)
-    ul_obj.prepend(6)
-    size = ul_obj.size()
-    print(size)
+        expected = True
+        result = lst.search(7)
+        self.assertEqual(expected, result)
 
-def test_search():
-    """
-    Use code in test_prepend() to create the list 6, 3, 7.
-    Call search(7) and search(10) to test the full behavior of the method.
-    """
-
-
-def test_print():
-    """
-    Use code in test_prepend() to create the list 6, 3, 7.
-    Call print() to test __str__() method.
-    """
+        expected = False
+        result = lst.search(10)
+        self.assertEqual(expected, result)
 
 
-def test_append():
-    """
-    Create an empty unordered list object.
-    Call append(7) and append(3) to test the method.
-    """
+    def test_print(self):
+        """
+        Use code in test_prepend() to create the list 6, 3, 7.
+        Call print() to test __str__() method.
+        """
+        lst = UnorderedList()
+        lst.prepend(7)
+        lst.prepend(3)
+        lst.prepend(6)
+
+        expected = "(6)->(3)->(7)"
+        result = str(lst)
+        self.assertEqual(expected, result)
 
 
-def test_pop():
-    """
-    Use code in test_append() to create the list 7, 3
-    Call pop(7) and pop(10) to test the full behavior of the method.
-    """
+
+    def test_append(self):
+        """
+        Create an empty unordered list object.
+        Call append(7) and append(3) to test the method.
+        """
+        lst = UnorderedList()
+        lst.append(7)
+        lst.append(3)
+
+        expected = "(7)->(3)"
+        result = str(lst)
+        self.assertEqual(expected, result)
 
 
-def test_remove():
-    """
-    Use code in test_append() to create the list 7, 3
-    Call remove(7) and remove(10) to test the full behavior of the method.
-    """
+    def test_pop(self):
+        """
+        Use code in test_append() to create the list 7, 3
+        Call pop(7) and pop(10) to test the full behavior of the method.
+        """
+        lst = UnorderedList()
+        lst.append(7)
+        lst.append(3)
+
+        expected = 3
+        result = lst.pop()
+        self.assertEqual(expected, result)
+
+        expected = "(7)"
+        result = str(lst)
+        self.assertEqual(expected, result)
 
 
-def main():
-    """
-    Test UnorderedList methods with simple test cases.
-    """
-    test_prepend()
-    # Call the testing functions here.
-    # As you add a call to a new testing function, comment out the ones
-    # that have been called already. Do NOT delete any of the calls.
+    def test_remove(self):
+        """
+        Use code in test_append() to create the list 7, 3
+        Call remove(7) and remove(10) to test the full behavior of the method.
+        """
+        lst = UnorderedList()
+        lst.append(7)
+        lst.append(3)
+        lst.append(6)
+
+        result = lst.remove(7)
+        expected = 7
+        self.assertEqual(expected, result)
+
+        result = lst.remove(10)
+        expected = None
+        self.assertEqual(expected, result)
 
 
 if __name__ == '__main__':
-    main()
+    unittest.main()
+

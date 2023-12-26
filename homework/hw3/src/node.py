@@ -1,7 +1,8 @@
 """
 node.py
 Jon Shallow
-20231102
+Mason Armand
+Nov 8, 2023
 """
 
 class Node:
@@ -18,6 +19,7 @@ class Node:
         """
         self.data = data
         self.next = None
+        self.previous = None
 
     def get_data(self):
         """
@@ -54,3 +56,33 @@ class Node:
         :type new_next: Node | None
         """
         self.next = new_next
+
+    def get_previous(self):
+        """
+        gets the previous property
+
+        :return: the previous property
+        :rtype: Node | None
+        """
+        return self.previous
+
+    def set_previous(self, new_previous):
+        """
+        Sets a new node the be the previous property
+
+        :param new_previous: The previous Node
+        :type new_previous: Node | None
+        """
+        self.previous = new_previous
+
+    def __str__(self):
+        node_str = ""
+        if self.previous:
+            node_str += f"({self.previous.data})<-"
+
+        node_str += f"[{self.data}]"
+
+        if self.next:
+            node_str += f"->({self.next.data})"
+
+        return node_str
